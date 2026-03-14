@@ -1,5 +1,11 @@
 # 🔮 Customer Churn Prediction — MLOps Project
 
+![Python](https://img.shields.io/badge/Python-3.9+-blue)
+![Scikit-learn](https://img.shields.io/badge/Scikit--learn-1.x-orange)
+![XGBoost](https://img.shields.io/badge/XGBoost-latest-green)
+![DVC](https://img.shields.io/badge/DVC-tracked-purple)
+![Flask](https://img.shields.io/badge/Flask-API-lightgrey)
+
 A production-ready, modular **MLOps** pipeline for predicting customer churn on the Telco dataset.  
 Covers data ingestion → preprocessing → model training with hyperparameter tuning → evaluation → prediction API.
 
