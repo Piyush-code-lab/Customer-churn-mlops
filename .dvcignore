@@ -1,0 +1,4 @@
+# DVC ignores (similar to .gitignore for DVC)
+.git
+.env
+venv/

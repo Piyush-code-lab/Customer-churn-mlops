@@ -1,0 +1,35 @@
+stages:
+  data_ingestion:
+    cmd: python -c "from src.components import DataIngestion; from src.config import ConfigurationManager; DataIngestion(ConfigurationManager().get_data_ingestion_config()).initiate_data_ingestion()"
+    deps:
+      - data/train.csv
+    outs:
+      - artifacts/data_ingestion/raw.csv
+      - artifacts/data_ingestion/train_split.csv
+      - artifacts/data_ingestion/test_split.csv
+
+  data_transformation:
+    cmd: python -c "
+from src.config import ConfigurationManager;
+from src.components import DataIngestion, DataTransformation;
+cfg = ConfigurationManager();
+tr, te = DataIngestion(cfg.get_data_ingestion_config()).initiate_data_ingestion();
+DataTransformation(cfg.get_data_transformation_config()).initiate_data_transformation(tr, te)
+"
+    deps:
+      - artifacts/data_ingestion/train_split.csv
+      - artifacts/data_ingestion/test_split.csv
+    outs:
+      - artifacts/preprocessor/preprocessor.pkl
+
+  model_training:
+    cmd: python main.py
+    deps:
+      - artifacts/data_ingestion/train_split.csv
+      - artifacts/data_ingestion/test_split.csv
+      - artifacts/preprocessor/preprocessor.pkl
+    outs:
+      - artifacts/models/model.pkl
+    metrics:
+      - artifacts/evaluation/metrics.json:
+          cache: false

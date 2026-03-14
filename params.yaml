@@ -1,0 +1,12 @@
+base:
+  random_state: 42
+  test_size: 0.2
+
+model:
+  accuracy_threshold: 0.75
+  cv_folds: 3
+
+data:
+  target_column: Churn
+  drop_columns:
+    - customerID
