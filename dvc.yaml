@@ -9,13 +9,7 @@ stages:
       - artifacts/data_ingestion/test_split.csv
 
   data_transformation:
-    cmd: python -c "
-from src.config import ConfigurationManager;
-from src.components import DataIngestion, DataTransformation;
-cfg = ConfigurationManager();
-tr, te = DataIngestion(cfg.get_data_ingestion_config()).initiate_data_ingestion();
-DataTransformation(cfg.get_data_transformation_config()).initiate_data_transformation(tr, te)
-"
+    cmd: python -c "from src.config import ConfigurationManager; from src.components import DataIngestion, DataTransformation; cfg = ConfigurationManager(); tr, te = DataIngestion(cfg.get_data_ingestion_config()).initiate_data_ingestion(); DataTransformation(cfg.get_data_transformation_config()).initiate_data_transformation(tr, te)"
     deps:
       - artifacts/data_ingestion/train_split.csv
       - artifacts/data_ingestion/test_split.csv

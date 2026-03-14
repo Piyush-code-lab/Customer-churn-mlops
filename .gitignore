@@ -25,6 +25,7 @@ artifacts/preprocessor/
 # DVC
 .dvc/cache
 .dvc/tmp
+data
 
 # IDE
 .vscode/
