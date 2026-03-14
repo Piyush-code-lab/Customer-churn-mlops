@@ -55,7 +55,7 @@ customer_churn_mlops/
 ### 1. Clone & create virtual environment
 
 ```bash
-git clone https://github.com/<your-username>/customer_churn_mlops.git
+git clone https://github.com/Piyush-code-lab/customer_churn_mlops.git
 cd customer_churn_mlops
 
 python -m venv venv
